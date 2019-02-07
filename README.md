@@ -16,6 +16,19 @@ This is an environment which I used.
   * Use this option to install the SDK on a workstation that already has ROS installed: [One Line SDK Install (binary)](https://bitbucket.org/DataspeedInc/dbw_mkz_ros/src/81e63fcc335d7b64139d7482017d6a97b405e250/ROS_SETUP.md?fileviewer=file-view-default)
 * [Udacity Simulator](https://github.com/udacity/CarND-Capstone/releases).
 
+### Traffic Light Detection
+I used [traffic light detection](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py) first, then I used [traffic light classification](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py).
+* The traffic light detection uses tensorflow object detection API.
+This API detects the traffic light nicely.
+Detected Image: 
+![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/original_image.png "Original Image and Detected Box")
+And I collected Traffic Light Images by this Object Detection.
+Collected Traffic Light Image:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/only_traffic_signal.png "Detected Traffic Light")
+* I used V in HSV.
+I resized to (60, 160), converted to HSV and only used V, because this looks more clear than gray scale and faster than original image.
+Converted Image:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/traffic_signal.png "Converted Image")
+* The traffic light classification uses LeNet.
+Learning Curv:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/learning_curvV0203.png "Learning Curv")
 ### Usage
 
 1. Clone the project repository
