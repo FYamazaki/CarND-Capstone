@@ -33,6 +33,8 @@ Converted Image:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/mas
 * The traffic light classification uses LeNet.  
 Learning Curv:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/learning_curvV0203.png "Learning Curv")
 
+LeNet:(https://github.com/FYamazaki/CarND-Capstone/blob/master/DeepLearning/TL_Detection.ipynb)
+
 The below is the network, I used.
 
 Layer (type)                  | Output Shape     |Param # |  
@@ -50,7 +52,7 @@ dropout_9 (Dropout)           | (None, 256)     |  0
 dense_6 (Dense)               | (None, 3)       | 771       
 
 ### Discussion
-I originally started VM on windows10 with simulator.  But when I turn on Camera, the car started going off.  So I switched to native Ubuntu 16.0. Then I started working on traffic light detection.  At the beginning, I tried to train whole image (800x600) by LeNet, but it didn't learn well.  So I decided to use object detection first.  I compared YOLO with SSD(Tensorflow Object Detection API), and YOLO (darknet) is slower than SSD. Then I decided to use SSD.  Now it works.  But this process is heavey on my poor laptop.  So, I call traffic light detection ony every 5th camera image.  If  I increase more, then car cannot stop at red light.  I wanted to work on more powerfull machine.  Now it barely works, but if the car runs more track, it eventually goes of the track.  I want to retrain SSD, but I gave up, because I need to create training data.
+I originally started VM on windows10 with simulator.  But when I turn on Camera, the car started going off.  So I switched to native Ubuntu 16.0. Then I started working on traffic light detection.  At the beginning, I tried to train whole image (800x600) by LeNet, but it didn't learn well.  So I decided to use object detection first.  I compared YOLO with SSD(Tensorflow Object Detection API), and YOLO (darknet) is slower than SSD. Then I decided to use SSD.  Now it works.  But this process is heavey on my poor laptop.  So, I call traffic light detection ony every 5th camera image.  If  I increase more, then car cannot stop at red light.  I wanted to work on more powerfull machine.  Now it barely works, but if the car runs more track and CPU get hotter, it eventually goes of the track.  I want to retrain SSD, but I gave up, because I need to create training data.
 
 ### Usage
 
