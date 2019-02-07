@@ -20,7 +20,7 @@ Simulator:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pi
 
 
 ### Traffic Light Detection
-I used [traffic light detection](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py) first, then I used [traffic light classification](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py).
+I used the traffic light detection [object_detection.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/object_detector.py) first, then I used the traffic light classification[tl_classifier.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py).
 * The traffic light detection uses tensorflow object detection API.
 This API detects the traffic light nicely.  
 Detected Image: 
@@ -30,10 +30,8 @@ Collected Traffic Light Image:![alt text](https://github.com/FYamazaki/CarND-Cap
 * I used V in HSV.
 I resized to (60, 160), converted to HSV and only used V, because this looks more clear than gray scale and faster than original image.  
 Converted Image:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/traffic_signal.png "Converted Image")
-* The traffic light classification uses LeNet.  
+* The traffic light classification uses LeNet [TL_Detection.ipynb](https://github.com/FYamazaki/CarND-Capstone/blob/master/DeepLearning/TL_Detection.ipynb).  
 Learning Curv:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/learning_curvV0203.png "Learning Curv")
-
-LeNet:(https://github.com/FYamazaki/CarND-Capstone/blob/master/DeepLearning/TL_Detection.ipynb)
 
 The below is the network, I used.
 
