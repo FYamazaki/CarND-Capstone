@@ -19,16 +19,20 @@ This is an environment which I used.
 ### Traffic Light Detection
 I used [traffic light detection](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py) first, then I used [traffic light classification](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py).
 * The traffic light detection uses tensorflow object detection API.
-This API detects the traffic light nicely.
+This API detects the traffic light nicely.  
 Detected Image: 
 ![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/original_image.png "Original Image and Detected Box")
-And I collected Traffic Light Images by this Object Detection.
+And I collected Traffic Light Images by this Object Detection.  
 Collected Traffic Light Image:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/only_traffic_signal.png "Detected Traffic Light")
 * I used V in HSV.
-I resized to (60, 160), converted to HSV and only used V, because this looks more clear than gray scale and faster than original image.
+I resized to (60, 160), converted to HSV and only used V, because this looks more clear than gray scale and faster than original image.  
 Converted Image:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/traffic_signal.png "Converted Image")
-* The traffic light classification uses LeNet.
+* The traffic light classification uses LeNet.  
 Learning Curv:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/learning_curvV0203.png "Learning Curv")
+
+### Discussion
+I originally started VM on windows10 with simulator.  But when I turn on Camera, the car started going off.  So I switched to native Ubuntu 16.0. Then I started working on traffic light detection.  At the beginning, I tried to train whole image (800x600) by LeNet, but it didn't learn well.  So I decided to use object detection first.  I compared YOLO with SSD(Tensorflow Object Detection API), and YOLO (darknet) is slower than SSD. Then I decided to use SSD.  Now it works.  But this process is heavey on my poor laptop.  So, I call traffic light detection ony every 5th camera image.  If  I increase more, then car cannot stop at red light.  I wanted to work on more powerfull machine.  Now it barely works, but if the car runs more track, it eventually goes of the track.  I want to retrain SSD, but I gave up, because I need to create training data.
+
 ### Usage
 
 1. Clone the project repository
