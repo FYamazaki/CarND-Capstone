@@ -29,6 +29,7 @@ I resized to (60, 160), converted to HSV and only used V, because this looks mor
 Converted Image:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/traffic_signal.png "Converted Image")
 * The traffic light classification uses LeNet.  
 Learning Curv:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/learning_curvV0203.png "Learning Curv")
+
 The below is the network, I used.
 
 Layer (type)                  | Output Shape     |Param # |  
