@@ -20,7 +20,7 @@ Simulator:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pi
 
 
 ### Traffic Light Detection
-I used the traffic light detection [object_detection.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/object_detector.py) first, then I used the traffic light classification[tl_classifier.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py).
+I used the traffic light detection [object_detection.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/object_detector.py) first, then I used the traffic light classification [tl_classifier.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py).
 * The traffic light detection uses tensorflow object detection API.
 This API detects the traffic light nicely.  
 Detected Image: 
