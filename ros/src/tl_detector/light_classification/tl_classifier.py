@@ -12,6 +12,7 @@ from object_detector import ObjectDetector
 import os
 
 MODEL_FILE = 'model.h5'
+MODEL_SITE_FILE = 'model_site.h5'
 DEF_SIZE = (60, 160)
 DEF_THRESHOLD = 0.2
 MIN_THRESHOLD = 0.1
@@ -38,7 +39,12 @@ class TLClassifier(object):
         set_session(sess)
 
         # check that model Keras version is same as local Keras version
-        f = h5py.File(FILE_DIR + '/' + MODEL_FILE, mode='r')
+        if is_site:
+            # site
+            f = h5py.File(FILE_DIR + '/' + MODEL_SITE_FILE, mode='r')
+        else:
+            # simulator
+            f = h5py.File(FILE_DIR + '/' + MODEL_FILE, mode='r')
         model_version = f.attrs.get('keras_version')
         keras_version = str(keras.__version__).encode('utf8')
 
