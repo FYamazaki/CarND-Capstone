@@ -16,8 +16,6 @@ This is an environment which I used.
   * Use this option to install the SDK on a workstation that already has ROS installed: [One Line SDK Install (binary)](https://bitbucket.org/DataspeedInc/dbw_mkz_ros/src/81e63fcc335d7b64139d7482017d6a97b405e250/ROS_SETUP.md?fileviewer=file-view-default)
 * [Udacity Simulator](https://github.com/udacity/CarND-Capstone/releases).
 
-Simulator:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/simulator.png "Simulator")
-
 
 ### Traffic Light Detection
 I used the traffic light detection [object_detection.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/object_detector.py) first, then I used the traffic light classification [tl_classifier.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py).
