@@ -48,7 +48,7 @@ dropout_9 (Dropout)           | (None, 256)     |  0
 dense_6 (Dense)               | (None, 3)       | 771       
 
 ### The result
-This is the final result.
+This is the final result.  The car drvies by itself, keep its lane, stop at the red, and start at the green.  But if CPU/GPU gets hotter, the car goes off the track.
 [![Final Result](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/simulator.png)](https://youtu.be/p2BWPz7WfZo)
 
 ### Discussion
