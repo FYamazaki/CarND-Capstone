@@ -41,10 +41,15 @@ class TLClassifier(object):
         # check that model Keras version is same as local Keras version
         if is_site:
             # site
+            rospy.loginfo("site mode")
             f = h5py.File(FILE_DIR + '/' + MODEL_SITE_FILE, mode='r')
+            self.model = load_model(FILE_DIR + '/' + MODEL_SITE_FILE)
         else:
             # simulator
+            rospy.loginfo("simulator mode")
             f = h5py.File(FILE_DIR + '/' + MODEL_FILE, mode='r')
+            self.model = load_model(FILE_DIR + '/' + MODEL_FILE)
+
         model_version = f.attrs.get('keras_version')
         keras_version = str(keras.__version__).encode('utf8')
 
@@ -52,7 +57,6 @@ class TLClassifier(object):
             rospy.loginfo('You are using Keras version ', keras_version,
               ', but the model was built using ', model_version)
 
-        self.model = load_model(FILE_DIR + '/' + MODEL_FILE)
         self.graph = tf.get_default_graph()
 
     def get_detection(self, image):
