@@ -15,7 +15,7 @@ MODEL_FILE = 'model.h5'
 MODEL_SITE_FILE = 'model_site.h5'
 DEF_SIZE = (60, 160)
 DEF_THRESHOLD = 0.2
-MIN_THRESHOLD = 0.1
+MIN_THRESHOLD = 0.0001
 FILE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 class TLClassifier(object):
@@ -62,8 +62,6 @@ class TLClassifier(object):
     def get_detection(self, image):
         num_detections, boxes, classes, scores = self.object_detector.run_inference_for_single_image(image)
         threshold = DEF_THRESHOLD
-        if num_detections > 0 and scores[0] < DEF_THRESHOLD:
-          threshold = MIN_THRESHOLD
 
         im_height, im_width, color = image.shape
         for i in range(0, num_detections):

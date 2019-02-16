@@ -12,8 +12,10 @@ import cv2
 
 # What model to download.
 TOP_DIR = os.path.dirname(os.path.realpath(__file__))
-MODEL_NAME = 'ssd_mobilenet_v1_coco_11_06_2017'
+#MODEL_NAME = 'ssd_mobilenet_v1_coco_11_06_2017'
 #MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
+MODEL_NAME = 'ssdlite_mobilenet_v2_coco_2018_05_09'
+
 MODEL_FILE = MODEL_NAME + '.tar.gz'
 
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
