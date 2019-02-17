@@ -19,7 +19,7 @@ This is an environment which I used.
 
 ### Traffic Light Detection
 I used the traffic light detection [object_detection.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/object_detector.py) first, then I used the traffic light classification [tl_classifier.py](https://github.com/FYamazaki/CarND-Capstone/blob/master/ros/src/tl_detector/light_classification/tl_classifier.py).
-* The traffic light detection uses SSD(tensorflow object detection API).
+* The traffic light detection uses SSD(ssdlite_mobilenet_v2_coco_2018_05_09:tensorflow object detection API).
 This API detects the traffic light nicely.  
 Detected Image: 
 ![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/original_image.png "Original Image and Detected Box")
