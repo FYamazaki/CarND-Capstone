@@ -53,7 +53,8 @@ class WaypointUpdater(object):
     def loop(self):
         # I'm sorry, my machine doesn't have enough power
         #rate = rospy.Rate(50)
-        rate = rospy.Rate(30)
+        #rate = rospy.Rate(30)
+        rate = rospy.Rate(10)
         while not rospy.is_shutdown():
             if self.pose and self.lane_waypoints:
                 # Get closest waypoint
