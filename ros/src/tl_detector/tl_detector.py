@@ -64,18 +64,19 @@ class TLDetector(object):
     def loop(self):
         rate = rospy.Rate(10)
         while not rospy.is_shutdown():
-            light_wp, state = self.process_traffic_lights()
-            if self.state != state:
-                self.state_count = 0
-                self.state = state
-            elif self.state_count >= STATE_COUNT_THRESHOLD:
-                self.last_state = self.state
-                light_wp = light_wp if state == TrafficLight.RED else -1
-                self.last_wp = light_wp
-                self.upcoming_red_light_pub.publish(Int32(light_wp))
-            else:
-                self.upcoming_red_light_pub.publish(Int32(self.last_wp))
-            self.state_count += 1
+            if self.pose is not None and self.waypoints is not None and self.has_image and len(self.lights) > 0:
+                light_wp, state = self.process_traffic_lights()
+                if self.state != state:
+                    self.state_count = 0
+                    self.state = state
+                elif self.state_count >= STATE_COUNT_THRESHOLD:
+                    self.last_state = self.state
+                    light_wp = light_wp if state == TrafficLight.RED else -1
+                    self.last_wp = light_wp
+                    self.upcoming_red_light_pub.publish(Int32(light_wp))
+                else:
+                    self.upcoming_red_light_pub.publish(Int32(self.last_wp))
+                self.state_count += 1
 
             rate.sleep()
 
