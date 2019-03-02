@@ -51,7 +51,7 @@ dense_6 (Dense)               | (None, 3)       | 771
 This is the final result.  The car drvies by itself, keep its lane, stop at the red, and start at the green.  But if CPU/GPU gets hotter, the car goes off the track.
 [![Final Result](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/simulator.png)](https://youtu.be/p2BWPz7WfZo)
 
-### Discussion
+### Discussion of Simulator
 I originally started VM on windows10 with simulator.  But when I turn on Camera, the car started going off.  So I switched to native Ubuntu 16.0. Then I started working on traffic light detection.  At the beginning, I tried to train whole image (800x600) by LeNet, but it didn't learn well.  So I decided to use object detection first.  I compared YOLO with SSD(Tensorflow Object Detection API), and YOLO (darknet) is slower than SSD. Then I decided to use SSD.  Now it works.  But this process is heavey on my poor laptop.  So, I call traffic light detection ony every 5th camera image.  If  I increase more, then car cannot stop at red light.  I wanted to work on more powerfull machine.  Now it barely works, but if the car runs more track and CPU get hotter, it eventually goes of the track.  I want to retrain SSD, but I gave up, because I need to create training data.
 
 ### Usage
@@ -74,6 +74,26 @@ source devel/setup.sh
 roslaunch launch/styx.launch
 ```
 4. Run the simulator
+
+### Discussion of Real world testing
+I used the same SSD in real world testing.  But object detection didn't work well.  So I wanted to retrain SSD.  This is what I did.
+1. I extracted images from bag by bag_to_image.py
+2. I annotated 1000 images by LabelImg.  Annotation:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/AnnotateByLabelImg.png "Annotation")
+3. I created csv from xml by xml_to_csv.py
+4. I created TF Record by generate_tfrecord.py
+```bash
+python object_detection/generate_tfrecord.py --csv_input=tl_data/tl_train_labels.csv --output_path=tl_data/train_tf_record --image_dir=image_color_train
+python object_detection/generate_tfrecord.py --csv_input=tl_data/tl_test_labels.csv --output_path=tl_data/test_tf_record --image_dir=image_color_test
+```
+5. I retrained model.
+```bash
+python object_detection/train.py --logtostderr --train_dir=tl_data --pipeline_config_path=tl_data/ssd_mobilenet_v1_tl.config 
+```
+6. I exported inference graph.
+```bash
+python object_detection/export_inference_graph.py --input_type image_tensor --pipeline_config_path tl_data/ssd_mobilenet_v1_tl.config --trained_checkpoint_prefix tl_data/model.ckpt-578 --output_directory object_detection/ssd_mobilenet_v1_tl
+```
+But it didn't improve a lot.  I tried to retrain RFCN because RFCN is slow but it gave more accurate detection.  But I could not retrain RFCN because my PC was poor and RFCN is big model.
 
 ### Real world testing
 1. Download [training bag](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/traffic_light_bag_file.zip) that was recorded on the Udacity self-driving car.
