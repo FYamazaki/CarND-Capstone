@@ -78,14 +78,15 @@ roslaunch launch/styx.launch
 ### Discussion of Real world testing
 I used the same SSD in real world testing.  But object detection didn't work well.  So I wanted to retrain SSD.  This is what I did.
 1. I extracted images from bag by bag_to_image.py
-2. I annotated 1000 images by LabelImg.  Annotation:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/AnnotateByLabelImg.png "Annotation")
+2. I annotated 1000 images by LabelImg.
+Annotation:![alt text](https://github.com/FYamazaki/CarND-Capstone/blob/master/pictures/AnnotateByLabelImg.png "Annotation")
 3. I created csv from xml by xml_to_csv.py
 4. I created TF Record by generate_tfrecord.py
 ```bash
 python object_detection/generate_tfrecord.py --csv_input=tl_data/tl_train_labels.csv --output_path=tl_data/train_tf_record --image_dir=image_color_train
 python object_detection/generate_tfrecord.py --csv_input=tl_data/tl_test_labels.csv --output_path=tl_data/test_tf_record --image_dir=image_color_test
 ```
-5. I retrained model.
+5. I prepared config and retrained model.
 ```bash
 python object_detection/train.py --logtostderr --train_dir=tl_data --pipeline_config_path=tl_data/ssd_mobilenet_v1_tl.config 
 ```
